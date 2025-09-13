@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
-import { useTheme } from "../context/ThemeContext"; 
+import { useTheme } from "../context/ThemeContext";
+import API from "../api";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -12,17 +13,8 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        alert(data.message || "Login failed");
-        return;
-      }
+      const res = await API.post("/login", { username, password });
+      const data = res.data;
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
@@ -30,21 +22,18 @@ export default function Login() {
       alert("Login successful 🎉");
       navigate("/dashboard");
     } catch (err) {
-      console.error("❌ Login error:", err);
-      alert("Something went wrong");
+      console.error("Login error:", err);
+      alert("Login failed");
     }
   };
 
   return (
     <div className={styles.container}>
-      {/* 🌙 Toggle button fixed top-right */}
       <button onClick={toggleTheme} className={styles.themeToggle}>
         {theme === "dark" ? "🌞 Light Mode" : "🌙 Dark Mode"}
       </button>
-
       <div className={styles.card}>
         <h2 className={styles.title}>School Payments Login</h2>
-
         <form onSubmit={handleLogin} className={styles.form}>
           <input
             type="text"
@@ -64,7 +53,6 @@ export default function Login() {
             Login
           </button>
         </form>
-
         <p className={styles.footer}>
           © {new Date().getFullYear()} School Payment System
         </p>
@@ -72,4 +60,3 @@ export default function Login() {
     </div>
   );
 }
-
