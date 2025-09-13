@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
-import API from "../api"; // ✅ use your configured axios instance
+import API from "../api";
 
 const Payments = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch transactions from backend
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // ✅ token automatically added by API.js interceptor
         const res = await API.get("/transactions");
         setTransactions(res.data);
       } catch (err) {
-        console.error("❌ Error fetching transactions:", err);
+        console.error("Error fetching transactions:", err);
       } finally {
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
