@@ -1,6 +1,6 @@
 // backend/routes/webhook.js
 import express from "express";
-import WebhookLog from "../models/WebhookLog.js"; // adjust path if model file location differs
+import WebhookLog from "../models/WebhookLog.js"; 
 
 const router = express.Router();
 
@@ -20,3 +20,4 @@ router.post("/", async (req, res) => {
 });
 
 export default router;
+
