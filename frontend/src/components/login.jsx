@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
-import { useTheme } from "../context/ThemeContext"; // 👈 import theme hook
+import { useTheme } from "../context/ThemeContext"; 
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -72,3 +72,4 @@ export default function Login() {
     </div>
   );
 }
+
