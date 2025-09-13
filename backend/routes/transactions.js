@@ -4,9 +4,7 @@ import authMiddleware from "../middleware/auth.js";
 
 const router = express.Router();
 
-/**
- * GET /api/transactions
- */
+
 router.get("/", authMiddleware, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -56,3 +54,4 @@ router.get("/", authMiddleware, async (req, res) => {
 });
 
 export default router;
+
