@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import axios from "axios"; // for API calls
+import axios from "axios";
 import styles from "./TransactionsTable.module.css";
 
 export default function TransactionsTable({ page = 1, onPageChange }) {
@@ -69,7 +69,6 @@ export default function TransactionsTable({ page = 1, onPageChange }) {
     return arr;
   }, [filterStatus, search, sort, order]);
 
-  // Payment handler with detailed error alerts
   const handlePayNow = async () => {
     setLoading(true);
     try {
@@ -90,7 +89,7 @@ export default function TransactionsTable({ page = 1, onPageChange }) {
         alert("Payment failed to initiate");
       }
     } catch (err) {
-      console.error("❌ Payment error:", err);
+      console.error("Payment error:", err);
       if (err.response) {
         alert(`Payment error: ${err.response.data.message || err.response.statusText}`);
       } else if (err.request) {
@@ -135,11 +134,7 @@ export default function TransactionsTable({ page = 1, onPageChange }) {
         <button onClick={() => setOrder(order === "asc" ? "desc" : "asc")}>
           {order === "asc" ? "⬆️" : "⬇️"}
         </button>
-        <button
-          onClick={handlePayNow}
-          disabled={loading}
-          style={{ marginLeft: 20 }}
-        >
+        <button onClick={handlePayNow} disabled={loading} style={{ marginLeft: 20 }}>
           {loading ? "Processing..." : "Pay Now"}
         </button>
       </div>
@@ -167,9 +162,7 @@ export default function TransactionsTable({ page = 1, onPageChange }) {
                   <td>{row.order_amount}</td>
                   <td>{row.transaction_amount}</td>
                   <td>
-                    <span
-                      className={`${styles.status} ${styles[row.status] || ""}`}
-                    >
+                    <span className={`${styles.status} ${styles[row.status] || ""}`}>
                       {row.status}
                     </span>
                   </td>
