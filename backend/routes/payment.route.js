@@ -1,5 +1,3 @@
-// routes/payment.route.js
-
 import express from 'express';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
@@ -12,13 +10,7 @@ const BASE_URL = 'https://api-preprod.phonepe.com/apis/pg-sandbox';
 
 router.post('/create-payment', async (req, res) => {
   try {
-    const {
-      order_id,
-      amount,
-      school_id,
-      student_info
-    } = req.body;
-
+    const { order_id, amount, school_id, student_info } = req.body;
     if (!order_id || !amount || !school_id || !student_info?.id) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
@@ -28,12 +20,10 @@ router.post('/create-payment', async (req, res) => {
       merchantTransactionId: order_id,
       merchantUserId: student_info.id,
       amount: amount * 100,
-      redirectUrl: 'https://yourdomain.com/redirect', 
+      redirectUrl: 'https://yourdomain.com/redirect',
       redirectMode: 'POST',
       callbackUrl: 'https://yourdomain.com/api/webhook',
-      paymentInstrument: {
-        type: 'PAY_PAGE'
-      }
+      paymentInstrument: { type: 'PAY_PAGE' },
     };
 
     const payloadBase64 = Buffer.from(JSON.stringify(payload)).toString('base64');
@@ -42,20 +32,11 @@ router.post('/create-payment', async (req, res) => {
     const response = await axios.post(
       `${BASE_URL}/pg/v1/pay`,
       { request: payloadBase64 },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-VERIFY': xVerify,
-          'X-CLIENT-ID': PG_KEY
-        }
-      }
+      { headers: { 'Content-Type': 'application/json', 'X-VERIFY': xVerify, 'X-CLIENT-ID': PG_KEY } }
     );
 
     const paymentUrl = response.data?.data?.instrumentResponse?.redirectInfo?.url;
-
-    if (!paymentUrl) {
-      throw new Error("Payment URL not returned");
-    }
+    if (!paymentUrl) throw new Error("Payment URL not returned");
 
     return res.json({ success: true, payment_url: paymentUrl });
   } catch (err) {
@@ -65,4 +46,3 @@ router.post('/create-payment', async (req, res) => {
 });
 
 export default router;
-
