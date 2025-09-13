@@ -1,0 +1,98 @@
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  transition: background 0.3s ease;
+}
+
+/* Top-right theme toggle */
+.themeToggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.themeToggle:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid #1f2937;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--card-bg);   /* ✅ adapts with theme */
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid #ccc;
+  transition: border 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.input::placeholder {
+  color: #9ca3af;
+}
+
+.input:focus {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+}
+
+.button {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent);
+  color: #111;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.footer {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
