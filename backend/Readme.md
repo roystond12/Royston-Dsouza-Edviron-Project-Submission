@@ -3,11 +3,6 @@
 POST /api/login
 → Login with username & password → returns JWT token + user info.
 
-👤 Users
-
-(Auto-created) A test user is seeded when the server starts:
-username: royston, password: hii.
-
 💳 Payments
 
 POST /api/payments/create (protected)
@@ -31,3 +26,4 @@ GET /api/transactions/status/:custom_order_id (protected)
 
 POST /api/transactions/seed 
 → Insert dummy transactions for testing.
+
