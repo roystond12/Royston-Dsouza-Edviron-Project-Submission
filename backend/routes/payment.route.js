@@ -28,7 +28,7 @@ router.post('/create-payment', async (req, res) => {
       merchantTransactionId: order_id,
       merchantUserId: student_info.id,
       amount: amount * 100,
-      redirectUrl: 'https://yourdomain.com/redirect', // ⚠️ Set actual redirect page
+      redirectUrl: 'https://yourdomain.com/redirect', 
       redirectMode: 'POST',
       callbackUrl: 'https://yourdomain.com/api/webhook',
       paymentInstrument: {
@@ -65,3 +65,4 @@ router.post('/create-payment', async (req, res) => {
 });
 
 export default router;
+
