@@ -22,7 +22,7 @@ router.post("/", authMiddleware, async (req, res) => {
       school_id,
       amount,
       userId: req.user.id, // comes from decoded auth token
-      redirect: `http://localhost:3001/payment/${school_id}/${amount}`,
+      redirect: `https://royston-dsouza-edviron-project-submission.onrender.com/payment/${school_id}/${amount}`,
     };
 
     const token = jwt.sign(payload, process.env.PRIVATE_KEY, {
@@ -72,3 +72,4 @@ router.get("/:schoolId/:amount", async (req, res) => {
 });
 
 export default router;
+
