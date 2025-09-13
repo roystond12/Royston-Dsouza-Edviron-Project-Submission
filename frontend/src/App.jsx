@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import API from "../api"; // ✅ use your configured axios instance
+import API from "./api"; // ✅ use your configured axios instance
 
 const Payments = () => {
   const [transactions, setTransactions] = useState([]);
