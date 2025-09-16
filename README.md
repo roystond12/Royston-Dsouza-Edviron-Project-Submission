@@ -54,8 +54,11 @@ JWT Authentication Middleware → Protects all endpoints.
 🔐 Login Page
 ![Login Page](Picture1.png)
 
+🔐 Login Page (Drak Mode)
+![Login Page](Picture2.png)
+
 ✅ Successful Login (Dashboard Access)
-![Login](Picture2.png)
+![Login](Picture3.png)
 
 📊 Dashboard - Day Mode
 ![DashBoard](Picture5.png)
