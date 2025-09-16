@@ -81,6 +81,12 @@ JWT Authentication Middleware → Protects all endpoints.
 
 ![Transaction](Picture6.png)
 
+Hovering Effect 
+
+![Hover](Screenshot 2025-09-16 155506.png)
+
+
+
 ⚙️ Tech Stack
 
 Backend
