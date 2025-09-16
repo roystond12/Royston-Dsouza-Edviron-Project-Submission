@@ -58,13 +58,13 @@ JWT Authentication Middleware → Protects all endpoints.
 ![Login](Picture2.png)
 
 📊 Dashboard - Day Mode
-![DashBoard](Picture3.png)
+![DashBoard](Picture5.png)
 
 🌙 Dashboard - Night Mode
 ![DashBoard](Picture4.png)
 
 💳 Transactions Table with Pagination & Sorting &  Payment Gateway Integration
-![Transaction](Picture5.png)
+![Transaction](Picture6.png)
 
 ⚙️ Tech Stack
 
